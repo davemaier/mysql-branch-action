@@ -1,0 +1,28 @@
+# action.yml
+name: 'MySQL branch'
+description: 'Clone MySQL database to get isolated development instances'
+inputs:
+  template-database:  
+    description: 'Name of the database that should be cloned'
+    required: true
+  host:  
+    description: 'Database hostname'
+    required: true
+  username:  
+    description: 'Username of the database user (needs superuser privileges)'
+    required: true
+  password:  
+    description: 'Password of the databse user'
+    required: true
+  prefix: 
+    description: 'Prefix for the new database name (_BRANCH_NAME will be appended)'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - -h ${{ inputs.host }}
+    - -u ${{ inputs.username }}
+    - -t ${{ inputs.template_database }}
+    - -n ${{ inputs.prefix }}
+    - -p ${{ inputs.password }}
