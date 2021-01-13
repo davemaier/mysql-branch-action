@@ -11,7 +11,7 @@ branchname=$(git branch --show-current)
 
 while getopts "h:u:t:n:p:" opt; do
     case "$opt" in
-    h) host=${$OPTARG//[[:blank:]]/}
+    h) host=${OPTARG//[[:blank:]]/}
        ;;
     u) username=$OPTARG
         ;;
