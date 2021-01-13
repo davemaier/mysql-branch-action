@@ -23,6 +23,6 @@ runs:
   args:
     - -h ${{ inputs.host }}
     - -u ${{ inputs.username }}
-    - -t ${{ inputs.template_database }}
+    - -t ${{ inputs.template-database }}
     - -n ${{ inputs.prefix }}
     - -p ${{ inputs.password }}
