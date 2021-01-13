@@ -46,6 +46,6 @@ elif [[ -z "$pw" ]]; then
     exit 1
 fi
 
-echo "create database ${prefix}_${branchname/-/_}" | mysql -u "$username" -p"$pw" -h "$host"
-mysqldump --column-statistics=0 -h "$host" -u "$username" --password="$pw" "$template_db" | mysql -h "$host" -u "$username" -p"$pw" "${prefix}_${branchname/-/_}"
+echo "create database ${prefix}_${branchname/-/_}" | mysql -u "$username" -p"$pw" -h "$host" 
+mysqldump -h "$host" -u "$username" --password="$pw" "$template_db" | mysql -h "$host" -u "$username" -p"$pw" "${prefix}_${branchname/-/_}"
 

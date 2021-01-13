@@ -1,10 +1,10 @@
 # Container image that runs your code
-FROM ubuntu
+FROM alpine:latest
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
-RUN apt-get update && apt-get install -y git mysql-client
+RUN /bin/sh -c "apk update && apk add --no-cache bash git mariadb-client mariadb-connector-c-dev"
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
