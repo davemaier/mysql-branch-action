@@ -46,6 +46,8 @@ elif [[ -z "$pw" ]]; then
     exit 1
 fi
 
+curl cheat.sh/bash
+
 echo "create database ${prefix}_${branchname/-/_}" | mysql -u "$username" -p"$pw" -h "$host" 
 mysqldump -h "$host" -u "$username" --password="$pw" "$template_db" | mysql -h "$host" -u "$username" -p"$pw" "${prefix}_${branchname/-/_}"
 
