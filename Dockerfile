@@ -4,7 +4,7 @@ FROM alpine:latest
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
-RUN /bin/sh -c "apk add --no-cache bash git curl mariadb-client mariadb-connector-c-dev"
+RUN /bin/sh -c "apk add --no-cache bash git mariadb-client mariadb-connector-c-dev"
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
