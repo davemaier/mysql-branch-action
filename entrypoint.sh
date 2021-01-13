@@ -13,13 +13,13 @@ while getopts "h:u:t:n:p:" opt; do
     case "$opt" in
     h) host=${OPTARG//[[:blank:]]/}
        ;;
-    u) username=$OPTARG
+    u) username=${OPTARG//[[:blank:]]/}
         ;;
-    t) template_db=$OPTARG
+    t) template_db=${OPTARG//[[:blank:]]/}
         ;;
-    n) prefix=$OPTARG
+    n) prefix=${OPTARG//[[:blank:]]/}
         ;;
-    p) pw=$OPTARG
+    p) pw=${OPTARG//[[:blank:]]/}
         ;;
     *) exit 1
     esac
