@@ -46,6 +46,6 @@ elif [[ -z "$pw" ]]; then
     exit 1
 fi
 
-echo "create database ${name/-/_}" | mysql -u "$username" -p"$pw" -h "$host" 
-mysqldump -h "$host" -u "$username" --password="$pw" "$template_db" | mysql -h "$host" -u "$username" -p"$pw" "${name/-/_}"
+echo "create database ${name//-/_}" | mysql -u "$username" -p"$pw" -h "$host" 
+mysqldump -h "$host" -u "$username" --password="$pw" "$template_db" | mysql -h "$host" -u "$username" -p"$pw" "${name//-/_}"
 
