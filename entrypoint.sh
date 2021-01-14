@@ -3,7 +3,7 @@
 # initialize arguments
 OPTIND=1 
 template_db=""
-prefix=""
+name=""
 username=""
 host=""
 pw=""
@@ -17,7 +17,7 @@ while getopts "h:u:t:n:p:" opt; do
         ;;
     t) template_db=${OPTARG//[[:blank:]]/}
         ;;
-    n) prefix=${OPTARG//[[:blank:]]/}
+    n) name=${OPTARG//[[:blank:]]/}
         ;;
     p) pw=${OPTARG//[[:blank:]]/}
         ;;
@@ -38,14 +38,14 @@ elif [[ -z "$username" ]]; then
 elif [[ -z "$host" ]]; then
     echo  "Argument -h (host) missing"
     exit 1
-elif [[ -z "$prefix" ]]; then
-    echo  "Argument -n (database name prefix) missing"
+elif [[ -z "$name" ]]; then
+    echo  "Argument -n (database name) missing"
     exit 1
 elif [[ -z "$pw" ]]; then
     echo  "Argument -p (password) missing"
     exit 1
 fi
 
-echo "create database ${prefix}_${branchname/-/_}" | mysql -u "$username" -p"$pw" -h "$host" 
-mysqldump -h "$host" -u "$username" --password="$pw" "$template_db" | mysql -h "$host" -u "$username" -p"$pw" "${prefix}_${branchname/-/_}"
+echo "create database ${name/-/_}" | mysql -u "$username" -p"$pw" -h "$host" 
+mysqldump -h "$host" -u "$username" --password="$pw" "$template_db" | mysql -h "$host" -u "$username" -p"$pw" "${name/-/_}"
 
